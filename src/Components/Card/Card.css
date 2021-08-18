@@ -1,0 +1,16 @@
+.card {
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100px;
+  height: 150px;
+  position: absolute;
+  z-index: 5;
+  overflow: hidden;
+  background-size: cover;
+  text-align: center;
+}
+
+.card img {
+  width: 100px;
+  overflow: hidden;
+}
