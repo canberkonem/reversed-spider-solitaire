@@ -45,12 +45,7 @@ function Card({ data, index, game, setGame, deckIndex }) {
       ? document.elementFromPoint(xEndPoint, yEndPoint)
       : document.getElementById("root");
 
-    if (
-      (parseInt(selectedCards[0].getAttribute("data-rank")) ===
-        parseInt(element.getAttribute("data-rank")) + 1 &&
-        element.classList.contains("card")) ||
-      element.classList.contains("cardHolder")
-    ) {
+    if (isValidMove(selectedCards[0], element)) {
       const tempDecks = [...game.decks];
       const selectedCardsStartingIndex = parseInt(
         selectedCards[0].getAttribute("index")
@@ -59,11 +54,13 @@ function Card({ data, index, game, setGame, deckIndex }) {
         selectedCardsStartingIndex
       );
       tempDecks[element.id].push(...transferCard);
+      checkCompleted(tempDecks, element.id, getRank, setGame);
       checkFaceUp(tempDecks);
 
       setGame((prevState) => ({
         ...prevState,
         decks: tempDecks,
+        moveCount: prevState.moveCount + 1,
       }));
     }
     selectedCards = [];
@@ -78,7 +75,33 @@ function Card({ data, index, game, setGame, deckIndex }) {
     }
   }
 
-  function checkCompleted() {}
+  function checkCompleted(decks, onDropDeckId, getRank, setGame) {
+    const onDropDeck = decks[onDropDeckId];
+    const onDropDeckFiltered = onDropDeck.filter((card) => !card.isDown);
+    const filteredDeckRanks = onDropDeckFiltered.map((card) =>
+      getRank(card.rank)
+    );
+    if (
+      onDropDeckFiltered.length >= 13 &&
+      onDropDeckFiltered[onDropDeckFiltered.length - 1].rank === "K"
+    ) {
+      const cardsInSeries = [];
+      const lastCardIndex = onDropDeckFiltered.length - 1;
+      for (let i = lastCardIndex; i > lastCardIndex - 12; i--) {
+        if (filteredDeckRanks[i] - 1 === filteredDeckRanks[i - 1]) {
+          cardsInSeries.push(onDropDeckFiltered[i - 1]);
+        }
+      }
+
+      if (cardsInSeries.length === 12) {
+        decks[onDropDeckId].splice(onDropDeck.length - 13);
+        setGame((prevState) => ({
+          ...prevState,
+          completed: prevState.completed + 1,
+        }));
+      }
+    }
+  }
 
   function isNotSelectable(currentCard) {
     if (currentCard.getAttribute("data-isdown") === "true") {
@@ -93,6 +116,21 @@ function Card({ data, index, game, setGame, deckIndex }) {
     }
     for (let i = 0; i < selectedCardsRanks.length - 1; i++) {
       if (selectedCardsRanks[i] !== selectedCardsRanks[i + 1] - 1) return true;
+    }
+  }
+
+  function isValidMove(selectedCard, targetElement) {
+    const selectedCardRank = parseInt(selectedCard.getAttribute("data-rank"));
+    const targetElementRank = parseInt(targetElement.getAttribute("data-rank"));
+    const targetElementSibling = targetElement.nextElementSibling;
+
+    if (
+      (!targetElementSibling &&
+        selectedCardRank === targetElementRank + 1 &&
+        targetElement.classList.contains("card")) ||
+      targetElement.classList.contains("cardHolder")
+    ) {
+      return true;
     }
   }
 

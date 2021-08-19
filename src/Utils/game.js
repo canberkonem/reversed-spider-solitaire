@@ -20,8 +20,8 @@ export const initiateGame = () => {
   let shuffledCards = _.shuffle(cards);
   const firstPile = _.chunk(shuffledCards.slice(0, 24), 6);
   const secondPile = _.chunk(shuffledCards.slice(24, 54), 5);
-  decks = [...firstPile, ...secondPile];
-  decks[10] = shuffledCards.slice(54);
+  const stockCardsPile = _.chunk(shuffledCards.slice(54), 10);
+  decks = [...firstPile, ...secondPile, ...stockCardsPile];
   for (let i = 0; i <= 9; i++) {
     decks[i][decks[i].length - 1].isDown = false;
   }

@@ -1,6 +1,6 @@
 .board {
   background-color: rgb(0, 111, 175);
-  height: 100vh;
+  height: 65vh;
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;

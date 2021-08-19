@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./Header.module.css";
 
-function Header() {
+function Header({ completed, moveCount }) {
   return (
     <div className={styles.header}>
-      <span>REVERSED-SPIDER SOLITAIRE</span>
+      <span>
+        Completed: {completed} Move:{moveCount}
+      </span>
     </div>
   );
 }
