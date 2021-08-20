@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Header.module.css";
+import github from "../../Assets/contacts/github.png";
+import EndGameModal from "../EndGameModal/EndGameModal";
+import { formatTime } from "../../Utils/formatTime";
 
 function Header({ completed, moveCount }) {
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    let interval = null;
+    if (completed < 8) {
+      interval = setInterval(() => setTime((prevState) => prevState + 1), 1000);
+    } else {
+      clearInterval(interval);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [completed]);
+
   return (
-    <div className={styles.header}>
-      <button onClick={() => window.location.reload()}>New Game</button>
-      <span>
-        Completed: {completed} Move:{moveCount}
-      </span>
-    </div>
+    <React.Fragment>
+      <div className={styles.header}>
+        <button onClick={() => window.location.reload()}>New Game</button>
+        <p>
+          Completed: {completed} &nbsp;&nbsp; Move: {moveCount} &nbsp;&nbsp;
+          Best Time: -- &nbsp;&nbsp;Time: &nbsp;{formatTime(time)}
+        </p>
+        <a
+          href="https://github.com/canberkonem/reversed-spider-solitaire"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src={github} alt="github logo" />
+        </a>
+      </div>
+      {completed === 1 && <EndGameModal time={time} moveCount={moveCount} />}
+    </React.Fragment>
   );
 }
 

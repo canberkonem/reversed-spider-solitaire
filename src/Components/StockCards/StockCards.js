@@ -18,7 +18,6 @@ function StockCards({ index, game, setGame, deck }) {
       decks: tempDecks,
     }));
 
-    console.log(index, deck, game.decks);
     setIsShown(false);
   }
 
