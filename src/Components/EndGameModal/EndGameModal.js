@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./EndGameModal.module.css";
 import { formatTime } from "../../Utils/formatTime";
-import { Link } from "react-router-dom";
-
-function EndGameModal({ time, moveCount }) {
+import BackHomeButton from "../BackHomeButton/BackHomeButton";
+function EndGameModal({ time, moveCount, setTime }) {
   const [name, setName] = useState("");
   const timeDisplay = formatTime(time);
 
@@ -17,23 +16,33 @@ function EndGameModal({ time, moveCount }) {
   function handleSubmit(event) {
     event.preventDefault();
     localStorage.setItem(name, time);
+    setTime(0);
+    setName(0);
   }
 
   return (
     <React.Fragment>
       <div className={styles.gameEndModule}></div>
-      <section className={styles.endMenu}>
+      <div className={styles.endMenu}>
         <h1>Congrats! You beat the game in {moveCount} move!</h1>
-        <p>Your time is: {timeDisplay}</p>
-
-        <form onSubmit={handleSubmit}>
-          <label>
-            Enter your name:
-            <input type="text" value={name} onChange={handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-      </section>
+        {time ? (
+          <p>
+            Your time is: {timeDisplay}
+            <form onSubmit={handleSubmit}>
+              <label>
+                Enter your name:
+                <input type="text" value={name} onChange={handleChange} />
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
+          </p>
+        ) : (
+          <>
+            <p>Your time has been submitted!</p>
+            <BackHomeButton />
+          </>
+        )}
+      </div>
     </React.Fragment>
   );
 }
