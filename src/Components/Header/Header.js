@@ -9,7 +9,7 @@ function Header({ completed, moveCount }) {
 
   useEffect(() => {
     let interval = null;
-    if (completed < 1) {
+    if (completed < 8) {
       interval = setInterval(() => setTime((prevState) => prevState + 1), 1000);
     } else {
       clearInterval(interval);
@@ -22,10 +22,15 @@ function Header({ completed, moveCount }) {
   return (
     <React.Fragment>
       <div className={styles.header}>
-        <button onClick={() => window.location.reload()}>New Game</button>
+        <button
+          className={styles.newGame}
+          onClick={() => window.location.reload()}
+        >
+          NEW GAME
+        </button>
         <p>
           Completed: {completed} &nbsp;&nbsp; Move: {moveCount} &nbsp;&nbsp;
-          Best Time: -- &nbsp;&nbsp;Time: &nbsp;{formatTime(time)}
+          Time: &nbsp;{formatTime(time)}
         </p>
         <a
           href="https://github.com/canberkonem/reversed-spider-solitaire"
@@ -35,7 +40,7 @@ function Header({ completed, moveCount }) {
           <img src={github} alt="github logo" />
         </a>
       </div>
-      {completed === 1 && (
+      {completed === 8 && (
         <EndGameModal time={time} setTime={setTime} moveCount={moveCount} />
       )}
     </React.Fragment>

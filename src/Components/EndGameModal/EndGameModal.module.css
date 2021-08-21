@@ -9,13 +9,13 @@
 }
 
 .endMenu {
+  box-sizing: border-box;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
   height: 400px;
   z-index: 999;
-  background-color: red;
   position: absolute;
   box-shadow: -9px 5px 15px 1px #ffe488, 12px -5px 15px 3px #80c7ff,
     5px 5px 13px -3px rgba(0, 0, 0, 0);
@@ -25,4 +25,48 @@
   border-right: 2px solid #ffe488;
   border-top: 2px solid #ffe488;
   background-color: lightgoldenrodyellow;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.endMenu p {
+  font-size: 1.25rem;
+  margin-bottom: 2em;
+}
+
+.resultDisplay {
+  font-weight: bolder;
+  color: rgb(0, 111, 175);
+  font-size: 1.75rem;
+}
+
+.enterScoreSection {
+  font-size: 1.5rem;
+}
+
+input {
+  text-align: center;
+  display: block;
+  margin: auto;
+  margin-bottom: 1rem;
+  border: 0;
+  border-bottom: 2px solid rgb(0, 111, 175);
+  outline: 0;
+  padding: 20px 0 3px 0;
+  background: transparent;
+  font-size: 1.2rem;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  letter-spacing: 3px;
+  border: 2px solid rgb(0, 111, 175);
+  color: white;
+  padding: 0.6em 1em;
+  border-radius: 15px;
+  font-weight: 800;
+  background-color: #80c7ff;
 }

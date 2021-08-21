@@ -8,37 +8,54 @@ function EndGameModal({ time, moveCount, setTime }) {
 
   function handleChange(event) {
     event.preventDefault();
-    if (event.target.value.length < 20) {
-      setName(event.target.value);
-    }
+    setName(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    localStorage.setItem(name, time);
-    setTime(0);
-    setName(0);
+    if (name.length > 0) {
+      let localData = [];
+      const gameEndData = {
+        name: name,
+        time: time,
+        move: moveCount,
+        formatTime: formatTime(time),
+      };
+      localData = JSON.parse(localStorage.getItem("score")) || [];
+      localData.push(gameEndData);
+      localStorage.setItem("score", JSON.stringify(localData));
+      setTime(0);
+      setName("");
+    } else {
+      alert("Please enter a valid name.");
+    }
   }
 
   return (
     <React.Fragment>
       <div className={styles.gameEndModule}></div>
       <div className={styles.endMenu}>
-        <h1>Congrats! You beat the game in {moveCount} move!</h1>
+        <h1>Congratulations!</h1>
+        <h2>
+          You beat the game in 
+          <span className={styles.resultDisplay}>{moveCount}</span> moves!
+        </h2>
         {time ? (
-          <p>
-            Your time is: {timeDisplay}
+          <section className={styles.enterScoreSection}>
+            Your time is:{" "}
+            <span className={styles.resultDisplay}>{timeDisplay}</span>
             <form onSubmit={handleSubmit}>
+              <br />
               <label>
-                Enter your name:
+                Enter your name: <br />
                 <input type="text" value={name} onChange={handleChange} />
               </label>
-              <input type="submit" value="Submit" />
+              <input type="submit" value="SUBMIT" />
             </form>
-          </p>
+          </section>
         ) : (
           <>
-            <p>Your time has been submitted!</p>
+            <p>Your score has been submitted!</p>
             <BackHomeButton />
           </>
         )}

@@ -14,7 +14,7 @@ export default function Home() {
           <Link to="/how-to-play">How to Play</Link>
         </li>
         <li>
-          <Link to="/about">Records</Link>
+          <Link to="/records">Records</Link>
         </li>
         <li>
           <Link to="/about">About</Link>

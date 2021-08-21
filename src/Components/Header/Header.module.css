@@ -27,3 +27,15 @@
   margin-left: auto;
   width: 100px;
 }
+
+.newGame {
+  margin-left: 10px;
+  cursor: pointer;
+  border: 2px solid rgb(0, 111, 175);
+  padding: 0.5em 0.8em;
+  border-radius: 15px;
+  background-color: #80c7ff;
+  color: white;
+  letter-spacing: 3px;
+  font-weight: 800;
+}

@@ -1,0 +1,14 @@
+.homeButton {
+  cursor: pointer;
+  border: 2px solid rgb(0, 111, 175);
+  padding: 0.6em 1em;
+  border-radius: 15px;
+  background-color: #80c7ff;
+}
+
+.homeButton a {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: 800;
+}

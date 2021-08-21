@@ -9,6 +9,7 @@ import {
 import HowToPlay from "./Pages/HowToPlay/HowToPlay";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
+import Records from "./Pages/Records/Records";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/game" component={CardBoard} />
         <Route path="/how-to-play" component={HowToPlay} />
+        <Route path="/records" component={Records} />
         <Route path="/about" component={About} />
       </Switch>
     </BrowserRouter>
