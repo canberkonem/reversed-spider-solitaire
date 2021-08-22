@@ -1,9 +1,11 @@
+@import url("../../Assets/style/variables.css");
+
 table.blueTable {
   margin-bottom: 1.5rem;
   border-radius: 15px;
-  border: 1px solid #1c6ea4;
-  width: 350px;
-  height: 40px;
+  border: 1px solid var(--records-table-border);
+  width: var(--recordstable-width);
+  height: var(--recordstable-height);
   text-align: left;
 }
 table.blueTable td,
@@ -15,17 +17,14 @@ table.blueTable tbody td {
   font-size: 13px;
 }
 table.blueTable tr:nth-child(even) {
-  background: #d0e4f5;
+  background: var(--records-table-bgc);
 }
-table.blueTable thead {
-  background: #80c7ff;
-  border-bottom: 2px solid #444444;
-}
+
 table.blueTable thead th {
   font-size: 17px;
   font-weight: bold;
   color: #ffffff;
-  border-left: 2px solid #d0e4f5;
+  border-left: 2px solid var(--border-color-blue);
 }
 table.blueTable thead th:first-child {
   border-left: none;

@@ -10,16 +10,17 @@ import HowToPlay from "./Pages/HowToPlay/HowToPlay";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
 import Records from "./Pages/Records/Records";
+import { HOME, GAME, HOWTOPLAY, RECORDS, ABOUT } from "./Utils/routes";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/game" component={CardBoard} />
-        <Route path="/how-to-play" component={HowToPlay} />
-        <Route path="/records" component={Records} />
-        <Route path="/about" component={About} />
+        <Route path={HOME} component={Home} exact />
+        <Route path={GAME} component={CardBoard} />
+        <Route path={HOWTOPLAY} component={HowToPlay} />
+        <Route path={RECORDS} component={Records} />
+        <Route path={ABOUT} component={About} />
       </Switch>
     </BrowserRouter>
   );

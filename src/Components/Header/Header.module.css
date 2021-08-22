@@ -1,26 +1,28 @@
+@import url("../../Assets/style/variables.css");
+
 .header {
   box-sizing: border-box;
-  background-color: lightgoldenrodyellow;
+  background-color: var(--secondary-color);
   height: 7.5vh;
   text-align: center;
   font-size: 1.35rem;
   display: flex;
   align-items: center;
-  border-bottom: 3px solid #ffe488;
+  border-bottom: 3px solid var(--border-color-yellow);
 }
 
 .header button {
   margin-right: auto;
-  width: 100px;
+  width: var(--newgame-btn-width);
 }
 
 .header p {
   padding: 0;
   margin: 0 1rem;
-  background-color: rgb(253, 253, 223);
+  background-color: var(--header-displayarea-bgc);
   padding: 0.5em 0.75em;
   border-radius: 15px;
-  border: 2px solid #ffe488;
+  border: 2px solid var(--border-color-yellow);
 }
 .header a {
   display: block;
@@ -29,12 +31,13 @@
 }
 
 .newGame {
+  font-size: 1rem;
   margin-left: 10px;
   cursor: pointer;
-  border: 2px solid rgb(0, 111, 175);
+  border: 2px solid var(--newgame-btn-border);
   padding: 0.5em 0.8em;
   border-radius: 15px;
-  background-color: #80c7ff;
+  background-color: var(--newgame-btn-bgc);
   color: white;
   letter-spacing: 3px;
   font-weight: 800;

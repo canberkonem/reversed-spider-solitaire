@@ -9,7 +9,7 @@ function Header({ completed, moveCount }) {
 
   useEffect(() => {
     let interval = null;
-    if (completed < 8) {
+    if (completed < 1) {
       interval = setInterval(() => setTime((prevState) => prevState + 1), 1000);
     } else {
       clearInterval(interval);
@@ -40,7 +40,7 @@ function Header({ completed, moveCount }) {
           <img src={github} alt="github logo" />
         </a>
       </div>
-      {completed === 8 && (
+      {completed === 1 && (
         <EndGameModal time={time} setTime={setTime} moveCount={moveCount} />
       )}
     </React.Fragment>

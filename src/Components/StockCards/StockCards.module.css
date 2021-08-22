@@ -1,9 +1,11 @@
+@import url("../../Assets/style/variables.css");
+
 .stockDeck {
-  width: 100px;
-  height: 150px;
-  margin-left: 100px;
+  width: var(--card-width);
+  height: var(--card-height);
+  margin-left: var(--card-width);
   position: absolute;
   border-radius: 8px;
-  background-image: url(../../Assets/cardImg/cardBack.png);
+  background-image: var(--card-back-img);
   background-size: cover;
 }

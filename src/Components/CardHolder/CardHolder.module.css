@@ -1,9 +1,12 @@
+@import url("../../Assets/style/variables.css");
+
 .cardHolder {
-  width: 100px;
-  height: 150px;
+  box-sizing: content-box;
+  width: var(--card-width);
+  height: var(--card-height);
   position: relative;
   border-radius: 8px;
-  background-color: rgba(186, 233, 248, 0.137);
+  background-color: var(--card-holder-bgc);
   border: 1px solid white;
-  top: 30px;
+  top: var(--cardholder-top);
 }

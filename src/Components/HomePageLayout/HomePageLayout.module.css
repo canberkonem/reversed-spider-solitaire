@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Rampart+One&display=swap");
+@import url("../../Assets/style/variables.css");
 
 .pageLayout {
   width: 100%;
   height: 100vh;
-  background-color: rgb(0, 111, 175);
+  background: var(--main-bgc-fallback); /* fallback for old browsers */
+  background: var(--main-bgc-gradient);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,19 +14,20 @@
 
 .middleBox {
   box-sizing: border-box;
-  width: 450px;
-  height: 500px;
-  background-color: lightgoldenrodyellow;
+  width: var(--homepage-width);
+  height: var(--homepage-height);
+  background-color: var(--secondary-color);
   border-radius: 15px;
-  border-left: 2px solid #80c7ff;
-  border-bottom: 2px solid #80c7ff;
-  border-right: 2px solid #ffe488;
-  border-top: 2px solid #ffe488;
+  border-left: 2px solid var(--border-color-blue);
+  border-bottom: 2px solid var(--border-color-blue);
+  border-right: 2px solid var(--border-color-yellow);
+  border-top: 2px solid var(--border-color-yellow);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: -9px 5px 15px 1px #ffe488, 12px -5px 15px 3px #80c7ff,
+  box-shadow: -9px 5px 15px 1px var(--border-color-yellow),
+    12px -5px 15px 3px var(--border-color-blue),
     5px 5px 13px -3px rgba(0, 0, 0, 0);
 }
 
@@ -34,7 +37,7 @@
   margin-bottom: 80px;
   font-size: 3rem;
   letter-spacing: 5px;
-  color: lightgoldenrodyellow;
+  color: var(--secondary-color);
   font-weight: 700;
-  text-shadow: 1px 1px #80c7ff;
+  text-shadow: 1px 1px var(--border-color-blue);
 }

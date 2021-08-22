@@ -1,3 +1,5 @@
+@import url("../../Assets/style/variables.css");
+
 * {
   box-sizing: border-box;
 }
@@ -21,7 +23,7 @@
   height: 10px;
 }
 .slides::-webkit-scrollbar-thumb {
-  background: rgb(0, 111, 175);
+  background: var(--howtoplay-scrollbar);
   border-radius: 10px;
 }
 .slides::-webkit-scrollbar-track {
@@ -43,22 +45,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 100px;
 }
 
 .slider > a {
+  font-size: 14px;
   display: inline-flex;
   width: 1.5rem;
   height: 1.5rem;
   color: white;
-  background: #80c7ff;
+  background: var(--howtoplay-points-bgc);
   text-decoration: none;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   margin: 0 0.25em 0.5em 0;
   position: relative;
-  border: 1px solid rgb(0, 111, 175);
+  border: 1px solid var(--howtoplay-scrollbar);
 }
 .slider > a:active {
   top: 1px;
@@ -70,4 +72,5 @@
 .slides img {
   width: 300px;
   height: 300px;
+  border-radius: 10px;
 }

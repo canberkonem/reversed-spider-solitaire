@@ -1,3 +1,5 @@
+@import url("../../Assets/style/variables.css");
+
 .navLinks {
   font-size: 2rem;
   list-style-type: none;
@@ -7,14 +9,14 @@
 
 .navLinks li a {
   text-transform: capitalize;
-  color: rgb(0, 111, 175);
+  color: var(--home-btn-color);
   text-decoration: none;
   display: inline-block;
   padding: 0.5rem 1.25rem;
   margin: 1rem;
   background-color: #fff;
   border-radius: 15px;
-  border: 2px solid rgb(0, 111, 175);
+  border: 2px solid var(--home-btn-color);
 }
 
 .navLinks li a:hover {

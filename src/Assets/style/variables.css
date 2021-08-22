@@ -1,0 +1,86 @@
+:root {
+  /* COLORS */
+  --main-bgc-fallback: #56ccf2;
+  --main-bgc-gradient: linear-gradient(to right, #2f80ed, #56ccf2);
+  --secondary-color: lightgoldenrodyellow;
+  --secondary-color-darkblue: rgb(0, 111, 175);
+  --secondary-color-blue: #80c7ff;
+  --border-color-blue: var(--secondary-color-blue);
+  --border-color-yellow: #ffe488;
+  --records-table-border: #1c6ea4;
+  --records-table-bgc: #d0e4f5;
+  --howtoplay-scrollbar: var(--records-table-border);
+  --howtoplay-points-bgc: var(--border-color-blue);
+  --home-btn-color: var(--secondary-color-darkblue);
+  --backhome-btn-border: var(--secondary-color-darkblue);
+  --newgame-btn-border: var(--secondary-color-darkblue);
+  --newgame-btn-bgc: var(--border-color-blue);
+  --header-displayarea-bgc: rgb(253, 253, 223);
+  --card-holder-bgc: rgba(186, 233, 248, 0.137);
+  /* CARD DIMENSIONS */
+
+  --card-width: 100px;
+  --card-height: 150px;
+  --cardholder-top: 30px;
+  --endmenu-width: 400px;
+  --endmenu-height: 400px;
+  --newgame-btn-width: 100px;
+  --homepage-width: 450px;
+  --homepage-height: 500px;
+  --recordstable-width: 350px;
+  --recordstable-height: 40px;
+  /* Z-INDEX */
+  --card-index: 5;
+  --endmenu-index: 999;
+  --endmenu-dropback: 10;
+
+  /* IMG URL */
+  --card-back-img: url(../../Assets/cardImg/cardBack.png);
+}
+
+@media (max-width: 1080px) {
+  :root {
+    --card-width: 66px;
+    --card-height: 100px;
+    font-size: 12px;
+    --endmenu-width: 350px;
+    --endmenu-height: 350px;
+    --homepage-width: 350px;
+    --homepage-height: 400px;
+    --recordstable-width: 300px;
+    --recordstable-height: 30px;
+  }
+}
+
+@media (max-width: 725px) {
+  :root {
+    --card-width: 50px;
+    --card-height: 75px;
+    font-size: 10px;
+    --cardholder-top: 20px;
+    --endmenu-width: 300px;
+    --endmenu-height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --card-width: 40px;
+    --card-height: 60px;
+    font-size: 8px;
+    --cardholder-top: 15px;
+    --endmenu-width: 250px;
+    --endmenu-height: 250px;
+    --newgame-btn-width: 75px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --card-width: 36px;
+    --card-height: 54px;
+    font-size: 6px;
+    --endmenu-width: 200px;
+    --endmenu-height: 200px;
+  }
+}
