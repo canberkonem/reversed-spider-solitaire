@@ -2,7 +2,7 @@
 
 This project is prepared as a capstone project for Trendyol Front End Bootcamp which is organised with the partnership of Kodluyoruz. The one suit spider solitaire game is developed by react.
 
-You can via following link. [PLAY!](https://github.com/facebook/create-react-app)
+You can via following link. [PLAY!](http://reversed-spider-solitaire-ty.herokuapp.com/)
 
 ## OVERVIEW
 
