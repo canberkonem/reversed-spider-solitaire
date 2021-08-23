@@ -34,11 +34,15 @@ function Records() {
             <th>Time</th>
           </tr>
           {sortedData.map((score, index) => (
-            <tr>
-              <td className={styles.index}>{index + 1}</td>
-              <td className={styles.nameCell}>{score.name}</td>
-              <td>{score.move}</td>
-              <td>{score.formatTime}</td>
+            <tr key={"tr" + index}>
+              <td className={styles.index} key={index + "_#"}>
+                {index + 1}
+              </td>
+              <td className={styles.nameCell} key={index + "_" + score.name}>
+                {score.name}
+              </td>
+              <td key={index + "_" + score.move}>{score.move}</td>
+              <td key={index + "_" + score.time}>{score.formatTime}</td>
             </tr>
           ))}
         </tbody>

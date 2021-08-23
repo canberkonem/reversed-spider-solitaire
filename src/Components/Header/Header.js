@@ -28,7 +28,7 @@ function Header({ completed, moveCount }) {
         >
           NEW GAME
         </button>
-        <p>
+        <p className="Time_Move_display">
           Completed: {completed} &nbsp;&nbsp; Move: {moveCount} &nbsp;&nbsp;
           Time: &nbsp;{formatTime(time)}
         </p>
