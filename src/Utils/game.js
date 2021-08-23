@@ -1,8 +1,8 @@
 import _ from "lodash";
 
+// Cards general data
 const cardInfo = {
   rank: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
-  value: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
 };
 
 // Function to generate card decks
@@ -30,6 +30,8 @@ export const initiateGame = () => {
   };
 };
 
+//Get number equivalent of rank
+
 export const getRank = (rank) => {
   switch (rank) {
     case "K":
@@ -45,6 +47,8 @@ export const getRank = (rank) => {
   }
 };
 
+//Checks the decks in the state if there is a row that has only closed cards or not
+
 export function checkFaceUp(decks) {
   for (let i = 0; i < decks.length; i++) {
     if (decks[i].length && decks[i].every((card) => card.isDown)) {
@@ -53,6 +57,8 @@ export function checkFaceUp(decks) {
     }
   }
 }
+
+//Gets the "element.target" and checks if it is selectable or not by controlling data that has
 
 export function isNotSelectable(currentCard) {
   if (currentCard.getAttribute("data-isdown") === "true") {
@@ -70,6 +76,8 @@ export function isNotSelectable(currentCard) {
   }
 }
 
+//Checks "(start)even.target" and "(end)event.target" to decide if the movement valid or not
+
 export function isValidMove(selectedCard, targetElement) {
   const selectedCardRank = parseInt(selectedCard.getAttribute("data-rank"));
   const targetElementRank = parseInt(targetElement.getAttribute("data-rank"));
@@ -83,7 +91,24 @@ export function isValidMove(selectedCard, targetElement) {
   ) {
     return true;
   }
+
+  // It adds red shadows for 700ms, if the move is not valid
+  if (
+    targetElement.getAttribute("data-isdown") === "false" &&
+    targetElement.id !== selectedCard.id
+  ) {
+    selectedCard.style.boxShadow = "0px 0px 31px -1px #FF3236";
+    setTimeout(() => {
+      selectedCard.style.boxShadow = null;
+    }, 700);
+    targetElement.style.boxShadow = "0px 0px 31px -1px #FF3236";
+    setTimeout(() => {
+      targetElement.style.boxShadow = null;
+    }, 700);
+  }
 }
+
+//After each valid move checks the column card dropped to see if the series completed or not.
 
 export function checkCompleted(decks, onDropDeckId, getRank, setGame) {
   const onDropDeck = decks[onDropDeckId];
@@ -112,22 +137,3 @@ export function checkCompleted(decks, onDropDeckId, getRank, setGame) {
     }
   }
 }
-
-// export const getRank = (rank) => {
-//   if (rank === "K" || rank === "Q" || rank === "J" || rank === "A") {
-//     switch (rank) {
-//       case "K":
-//         return 13;
-//       case "Q":
-//         return 12;
-//       case "J":
-//         return 11;
-//       case "A":
-//         return 1;
-//         default:
-//           return parseInt(rank)
-//     }
-//   } else {
-//     return parseInt(rank);
-//   }
-// };

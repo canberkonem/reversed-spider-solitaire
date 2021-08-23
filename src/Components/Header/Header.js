@@ -3,13 +3,14 @@ import styles from "./Header.module.css";
 import github from "../../Assets/contacts/github.png";
 import EndGameModal from "../EndGameModal/EndGameModal";
 import { formatTime } from "../../Utils/formatTime";
+import NewGameButton from "../NewGameButton/NewGameButton";
 
 function Header({ completed, moveCount }) {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
     let interval = null;
-    if (completed < 1) {
+    if (completed < 8) {
       interval = setInterval(() => setTime((prevState) => prevState + 1), 1000);
     } else {
       clearInterval(interval);
@@ -22,12 +23,7 @@ function Header({ completed, moveCount }) {
   return (
     <React.Fragment>
       <div className={styles.header}>
-        <button
-          className={styles.newGame}
-          onClick={() => window.location.reload()}
-        >
-          NEW GAME
-        </button>
+        <NewGameButton />
         <p className="Time_Move_display">
           Completed: {completed} &nbsp;&nbsp; Move: {moveCount} &nbsp;&nbsp;
           Time: &nbsp;{formatTime(time)}
@@ -40,7 +36,7 @@ function Header({ completed, moveCount }) {
           <img src={github} alt="github logo" />
         </a>
       </div>
-      {completed === 1 && (
+      {completed === 8 && (
         <EndGameModal time={time} setTime={setTime} moveCount={moveCount} />
       )}
     </React.Fragment>

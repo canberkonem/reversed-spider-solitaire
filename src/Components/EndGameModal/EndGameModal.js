@@ -23,7 +23,8 @@ function EndGameModal({ time, moveCount, setTime }) {
       };
       localData = JSON.parse(localStorage.getItem("score")) || [];
       localData.push(gameEndData);
-      localStorage.setItem("score", JSON.stringify(localData));
+      const updatedLocalData = JSON.stringify(localData);
+      localStorage.setItem("score", updatedLocalData);
       setTime(0);
       setName("");
     } else {

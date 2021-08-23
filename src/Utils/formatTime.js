@@ -1,3 +1,5 @@
+//Format time as 00:00:00 to display correctly
+
 export const formatTime = (time) => {
   const getSeconds = `0${time % 60}`.slice(-2);
   const minutes = `${Math.floor(time / 60)}`;

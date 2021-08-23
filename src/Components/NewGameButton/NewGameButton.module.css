@@ -1,0 +1,12 @@
+.newGame {
+  font-size: 1rem;
+  margin-left: 10px;
+  cursor: pointer;
+  border: 2px solid var(--newgame-btn-border);
+  padding: 0.5em 0.8em;
+  border-radius: 15px;
+  background-color: var(--newgame-btn-bgc);
+  color: white;
+  letter-spacing: 3px;
+  font-weight: 800;
+}

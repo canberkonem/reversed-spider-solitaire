@@ -37,6 +37,11 @@
   /* IMG URL */
   --card-back-img: url(../../Assets/cardImg/cardBack.png);
 }
+/*
+================================================
+VARIABLE MEDIA QUERIES TO PROVIDE RESPONSIVENESS
+================================================ 
+*/
 
 @media (max-width: 1080px) {
   :root {

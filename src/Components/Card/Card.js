@@ -15,17 +15,25 @@ function Card({ data, index, game, setGame, deckIndex }) {
 
   function dragStart(event) {
     const currentCard = event.target;
+
+    //Removes default image of dragging
     event.dataTransfer.setDragImage(new Image("0", "0"), -10, -10);
     if (isNotSelectable(currentCard)) {
+      currentCard.style.boxShadow = "0px 0px 31px -1px #FF3236";
+      setTimeout(() => {
+        currentCard.style.boxShadow = null;
+      }, 700);
       return;
     }
 
+    //gets all selected cards array
     selectedCards.push(currentCard);
     let siblingCard = currentCard.nextElementSibling;
     while (siblingCard) {
       selectedCards.push(siblingCard);
       siblingCard = siblingCard.nextElementSibling;
     }
+    //Starting point coordinates for reference.
     mouseX = event.pageX;
     mouseY = event.pageY;
   }
@@ -36,6 +44,7 @@ function Card({ data, index, game, setGame, deckIndex }) {
     selectedCards.forEach((card) => {
       card.style.zIndex = "999";
       card.style.transform = `translate(${diffX}px,${diffY}px)`;
+      card.style.boxShadow = "  0px 0px 15px -1px #32ff00";
     });
   }
 
@@ -44,7 +53,10 @@ function Card({ data, index, game, setGame, deckIndex }) {
     selectedCards.forEach((card) => {
       card.style.zIndex = null;
       card.style.transform = `translate(0px,0px)`;
+      card.style.boxShadow = null;
     });
+
+    //save end coords to select element dropped on
     const xEndPoint = event.pageX;
     const yEndPoint = event.pageY;
     const element = document.elementFromPoint(xEndPoint, yEndPoint)

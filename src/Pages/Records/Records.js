@@ -5,6 +5,8 @@ import styles from "./Records.module.css";
 
 function Records() {
   let localData = JSON.parse(localStorage.getItem("score")) || [];
+
+  //Compare times of games come from local storage
   function compare(a, b) {
     const scoreA = a.time;
     const scoreB = b.time;
@@ -18,6 +20,7 @@ function Records() {
     return comparison;
   }
 
+  //The dummyData is added because the rows of table are added according to array length.
   const dummyData = Array(10).fill("");
   localData = localData.concat(dummyData);
   const sortedData = localData.sort(compare).slice(0, 10);
