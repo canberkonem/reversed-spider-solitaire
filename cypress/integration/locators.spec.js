@@ -1,24 +1,38 @@
 /// <reference types="cypress" />
 
 describe("home page navigation", () => {
+  beforeEach(() => {
+    cy.visit("/");
+  });
   it("should display navigation items", () => {
-    cy.visit("http://localhost:3000/");
     cy.get("li");
     cy.contains("Start");
     cy.contains("How to Play");
     cy.contains("Records");
     cy.contains("About");
   });
+  it("should go to about page when clicked", () => {
+    cy.contains("About").click();
+    cy.url().should("include", "/about");
+  });
+  it("should go to records page when clicked", () => {
+    cy.contains("Records").click();
+    cy.url().should("include", "/records");
+  });
+
+  it("should go to how to play page when clicked", () => {
+    cy.contains("How to Play").click();
+    cy.url().should("include", "/how-to-play");
+  });
+  it("should go to game page when clicked", () => {
+    cy.contains("Start").click();
+    cy.url().should("include", "/game");
+  });
 });
 
 describe("About page content", () => {
   beforeEach(() => {
     cy.visit("/about");
-  });
-
-  it("should go to about page when clicked", () => {
-    cy.contains("About").click();
-    cy.url().should("include", "/about");
   });
 
   it("should have back to home button in about page", () => {
